@@ -18,6 +18,18 @@ Breadcrumbs::for('dashboard_home', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Home', '#');
 });
+
+// Dashboard > Categories
+Breadcrumbs::for('categories', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Categories', route('categories.index'));
+});
+
+// Dashboard > Categories > Add
+Breadcrumbs::for('add-category', function (BreadcrumbTrail $trail) {
+    $trail->parent('categories');
+    $trail->push('Add Category', route('categories.create'));
+});
 // Home > Blog
 // Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
 //     $trail->parent('home');
