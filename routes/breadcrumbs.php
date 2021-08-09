@@ -13,6 +13,11 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('dashboard.index'));
 });
 
+// Dashboard > Home
+Breadcrumbs::for('dashboard_home', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Home', '#');
+});
 // Home > Blog
 // Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
 //     $trail->parent('home');
