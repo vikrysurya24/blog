@@ -10,15 +10,22 @@
        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="language" href="#" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
-             <!-- lang:id -->
-             <i class="flag-icon flag-icon-id"></i>
-             <!-- lang:en -->
-             <!-- <i class="flag-icon flag-icon-gb"></i> -->
+               @switch(app()->getLocale())
+                     @case('id')
+                        {{-- lang:id --}}
+                        <i class="flag-icon flag-icon-id"></i>
+                        @break
+                     @case('en')
+                        {{-- lang:en --}}
+                        <i class="flag-icon flag-icon-gb"></i>
+                        @break
+                     @default 
+               @endswitch
+               {{ strtoupper(app()->getLocale()) }}
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language">
-             <a class="dropdown-item" href="#">1st language</a>
-             <a class="dropdown-item" href="#">2nd language</a>
-             <a class="dropdown-item" href="#">etc...</a>
+             <a class="dropdown-item" href="{{ route('localization.switch', ['language' => 'id']) }}">{{ trans('localization.id') }}</a>
+             <a class="dropdown-item" href="{{ route('localization.switch', ['language' => 'en']) }}">{{ trans('localization.en') }}</a>
           </div>
        </li>
        <li class="nav-item dropdown">
