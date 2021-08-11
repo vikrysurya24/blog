@@ -14,6 +14,8 @@
    <link rel="stylesheet" href="{{ asset('vendor/flag-icon-css/css/flag-icon.min.css') }}">
    {{-- Quicksand Font --}}
    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+   @stack('css')
 </head>
 
 <body>
@@ -56,6 +58,11 @@
    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
    <!-- my-dashboard -->
    <script src="{{ asset('vendor/dashboard/js/dashboard.js') }}"></script>
+
+   {{-- Sweetalert2 --}}
+   @include('sweetalert::alert')
+
+   @stack('js')
 </body>
 
 </html>

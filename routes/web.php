@@ -27,6 +27,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth']], functio
     // Dashboard
     Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
 
+    // select2:Category
+    Route::get('/categories/select', [\App\Http\Controllers\CategoryController::class, 'select'])->name('categories.select');
+
     //Categories 
     Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
+
+    // Filmanager
+    Route::group(['prefix' => 'filemanager'], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 });

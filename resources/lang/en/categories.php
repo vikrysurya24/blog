@@ -3,6 +3,12 @@
 language : English
 */
 return [
+    'label' => [
+        'no_data' => [
+            'fetch' => "No category data yet",
+            'search' => ":keyword category not found",
+        ]
+    ],
     'title' => [
         'index' => 'Categories',
         'create' => 'Add category',
@@ -34,9 +40,9 @@ return [
         ],
         'select' => [
             'parent_category' => [
-                'label' => 'Parent category',
-                'placeholder' => 'Choose parent category',
-                'attribute' => 'parent category'
+                'label' => 'Parent Category',
+                'placeholder' => 'Choose Parent Category',
+                'attribute' => 'Category'
             ]
         ],
         'textarea' => [

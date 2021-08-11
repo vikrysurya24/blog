@@ -7,24 +7,26 @@
         </label>
         <div>
             <!-- detail -->
-            <a href="#" class="btn btn-sm btn-primary" role="button">
+            <a href="{{ route('categories.show', ['category' => $item]) }}" class="btn btn-sm btn-primary" role="button">
                 <i class="fas fa-eye"></i>
             </a>
             <!-- edit -->
-            <a class="btn btn-sm btn-info" role="button">
+            <a class="btn btn-sm btn-info" role="button" href="{{ route('categories.edit', ['category' => $item]) }}">
                 <i class="fas fa-edit"></i>
             </a>
             <!-- delete -->
-            <form class="d-inline" action="" method="POST">
+            <form class="d-inline" action="{{ route('categories.destroy', ['category' => $item]) }}" role="alert" method="POST" alert-title="{{ trans('categories.alert.delete.title') }}" alert-text="{{ trans('categories.alert.delete.message.confirm', ['title' => $item->title]) }}" alert-cancel="{{ trans('categories.button.cancel.value') }}" alert-yes="{{ trans('categories.button.delete.value') }}">
+                @method('DELETE')
+                @csrf
                 <button type="submit" class="btn btn-sm btn-danger">
                 <i class="fas fa-trash"></i>
                 </button>
             </form>
         </div>
         <!-- todo:show subcategory -->
-        @if ($item->parent)
+        @if ($item->inheritance && !trim(request()->get('keyword')))
             @include('categories.category-list', [
-                'categories' => $item->parent,
+                'categories' => $item->inheritance,
                 'count' => $count + 2
             ])
         @endif

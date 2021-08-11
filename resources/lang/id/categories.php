@@ -3,6 +3,12 @@
 language : Indonesia
 */
 return [
+    'label' => [
+        'no_data' => [
+            'fetch' => "Data kategori belum ada",
+            'search' => "Kategori :keyword tidak ditemukan",
+        ]
+    ],
     'title' => [
         'index' => 'Kategori',
         'create' => 'Tambah kategori',
@@ -34,9 +40,9 @@ return [
         ],
         'select' => [
             'parent_category' => [
-                'label' => 'Induk kategori',
-                'placeholder' => 'Pilih induk kategori',
-                'attribute' => 'induk kategori'
+                'label' => 'Induk Kategori',
+                'placeholder' => 'Pilih Induk Kategori',
+                'attribute' => 'Kategori'
             ]
         ],
         'textarea' => [
@@ -88,7 +94,7 @@ return [
         'delete' => [
             'title' => 'Hapus kategori',
             'message' => [
-                'confirm' => "Yakin akan menghapus kategori ?",
+                'confirm' => "Yakin akan menghapus kategori :title ?",
                 'success' => "Kategori berhasil dihapus",
                 'error' => "Terjadi kesalahan saat menghapus kategori."
             ]

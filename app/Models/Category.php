@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'slug', 'thumbnail', 'description', 'parent_id'];
+
     public function scopeOnlyParent($query)
     {
         return $query->whereNull('parent_id');
@@ -19,8 +21,18 @@ class Category extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
+    public function inheritance()
+    {
+        return $this->child()->with('inheritance');
+    }
+
     public function parent()
     {
-        return $this->child()->with('parent');
+        return $this->belongsTo(self::class);
+    }
+
+    public function scopeSearch($query, $title)
+    {
+        return $query->where('title', 'LIKE', "%{$title}%");
     }
 }
