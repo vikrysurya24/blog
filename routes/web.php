@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Lang
 Route::get('/localization/{language}', \App\Http\Controllers\LocalizationController::class)->name('localization.switch');
 
 Route::get('/', function () {
@@ -32,6 +33,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth']], functio
 
     //Categories 
     Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
+
+    //Tags 
+    Route::resource('/tags', \App\Http\Controllers\TagController::class);
 
     // Filmanager
     Route::group(['prefix' => 'filemanager'], function () {

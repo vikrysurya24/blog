@@ -15,13 +15,15 @@
              </div>
              {{ trans('dashboard.link.posts') }}
           </a>
+          {{-- Categories --}}
           <a class="nav-link {{ setActive(['categories.index', 'categories.create', 'categories.edit', 'categories.show']) }}" href="{{ route('categories.index') }}">
              <div class="sb-nav-link-icon">
                 <i class="fas fa-bookmark"></i>
              </div>
              {{ trans('dashboard.link.categories') }}
           </a>
-          <a class="nav-link" href="#">
+          {{-- Tags --}}
+          <a class="nav-link {{ setActive(['tags.index']) }}" href="{{ route('tags.index') }}">
              <div class="sb-nav-link-icon">
                 <i class="fas fa-tags"></i>
              </div>
