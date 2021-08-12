@@ -17,7 +17,7 @@ return [
             ],
             'slug' => [
                 'label' => 'Slug',
-                'placeholder' => 'Automatis dibuatkan',
+                'placeholder' => 'Otomatis dibuatkan',
                 'attribute' => 'slug'
             ],
             'search' => [
@@ -29,8 +29,8 @@ return [
     ],
     'label' => [
         'no_data' => [
-            'fetch' => "Data tag belum ada",
-            'search' => "Tag :keyword tidak ditemukan",
+            'fetch' => "Data label belum ada",
+            'search' => "Label :keyword tidak ditemukan",
         ]
     ],
     'button' => [
@@ -48,6 +48,9 @@ return [
         ],
         'cancel' => [
             'value' => 'Batal'
+        ],
+        'back' => [
+            'value' => 'Kembali'
         ],
     ],
     'alert' => [

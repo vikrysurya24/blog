@@ -35,7 +35,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth']], functio
     Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
 
     //Tags 
-    Route::resource('/tags', \App\Http\Controllers\TagController::class);
+    Route::resource('/tags', \App\Http\Controllers\TagController::class)->except(['show']);
 
     // Filmanager
     Route::group(['prefix' => 'filemanager'], function () {

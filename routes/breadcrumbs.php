@@ -31,27 +31,17 @@ Breadcrumbs::for('add-category', function (BreadcrumbTrail $trail) {
     $trail->push('Add Category', route('categories.create'));
 });
 
-// Dashboard > Categories > Edit
+// Dashboard > Categories > Edit > [Title]
 Breadcrumbs::for('edit-category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('categories');
     $trail->push('Edit Category', route('categories.edit', ['category' => $category]));
-});
-
-// Dashboard > Categories > Edit > [Title]
-Breadcrumbs::for('edit-category-title', function (BreadcrumbTrail $trail, $category) {
-    $trail->parent('edit-category', $category);
     $trail->push($category->title, route('categories.edit', ['category' => $category]));
 });
 
-// Dashboard > Categories > Detail
+// Dashboard > Categories > Detail > [Title]
 Breadcrumbs::for('detail-category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('categories');
     $trail->push('Detail Category', route('categories.show', ['category' => $category]));
-});
-
-// Dashboard > Categories > Detail > [Title]
-Breadcrumbs::for('detail-category-title', function (BreadcrumbTrail $trail, $category) {
-    $trail->parent('detail-category', $category);
     $trail->push($category->title, route('categories.show', ['category' => $category]));
 });
 
@@ -61,14 +51,15 @@ Breadcrumbs::for('tags', function (BreadcrumbTrail $trail) {
     $trail->push('Tags', route('tags.index'));
 });
 
-// Home > Blog
-// Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
-//     $trail->parent('home');
-//     $trail->push('Blog', route('blog'));
-// });
+// Dashboard > Tags > Add
+Breadcrumbs::for('add-tag', function (BreadcrumbTrail $trail) {
+    $trail->parent('tags');
+    $trail->push('Add Tag', route('tags.create'));
+});
 
-// Home > Blog > [Category]
-// Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
-//     $trail->parent('blog');
-//     $trail->push($category->title, route('category', $category));
-// });
+// Dashboard > Tags > Edit > [Title]
+Breadcrumbs::for('edit-tag', function (BreadcrumbTrail $trail, $tag) {
+    $trail->parent('tags');
+    $trail->push('Edit Tag', route('tags.edit', ['tag' => $tag]));
+    $trail->push($tag->title, route('tags.edit', ['tag' => $tag]));
+});
