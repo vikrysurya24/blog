@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Laravel\Ui\Presets\React;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleController extends Controller
@@ -176,6 +176,14 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        // Validasi
+        if (User::role($role->name)->count()) {
+            Alert::warning(
+                trans('roles.alert.delete.title'),
+                trans('roles.alert.delete.message.warning', ['name' => $role->name])
+            );
+            return redirect()->route('roles.index');
+        }
         // Proses Delete
         DB::beginTransaction();
         try {
