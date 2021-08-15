@@ -29,8 +29,9 @@
              </div>
              {{ trans('dashboard.link.tags') }}
           </a>
+          {{-- Users --}}
           <div class="sb-sidenav-menu-heading">{{ trans('dashboard.menu.user_permission') }}</div>
-          <a class="nav-link" href="#">
+          <a class="nav-link {{ setActive(['users.index', 'users.create', 'users.edit']) }}" href="{{ route('users.index') }}">
              <div class="sb-nav-link-icon">
                 <i class="fas fa-user"></i>
              </div>

@@ -121,3 +121,22 @@ Breadcrumbs::for('edit-role', function (BreadcrumbTrail $trail, $role) {
     $trail->push('Edit Role', route('roles.edit', ['role' => $role]));
     $trail->push($role->name, route('roles.edit', ['role' => $role]));
 });
+
+// Dashboard > Users
+Breadcrumbs::for('users', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Users', route('users.index'));
+});
+
+// Dashboard > Users > Add
+Breadcrumbs::for('add-user', function (BreadcrumbTrail $trail) {
+    $trail->parent('users');
+    $trail->push('Add User', route('users.create'));
+});
+
+// Dashboard > Users > Edit > [Title]
+Breadcrumbs::for('edit-user', function (BreadcrumbTrail $trail, $user) {
+    $trail->parent('users');
+    $trail->push('Edit User', route('users.edit', ['user' => $user]));
+    $trail->push($user->name, route('users.edit', ['user' => $user]));
+});

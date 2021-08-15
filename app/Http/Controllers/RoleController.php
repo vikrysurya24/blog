@@ -30,6 +30,16 @@ class RoleController extends Controller
         ]);
     }
 
+    public function select(Request $request)
+    {
+        $roles = Role::select('id', 'name')->limit(7);
+        if ($request->has('key')) {
+            $roles->where('name', 'LIKE', "%{$request->key}%");
+        }
+
+        return response()->json($roles->get());
+    }
+
     /**
      * Show the form for creating a new resource.
      *
