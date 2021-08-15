@@ -43,7 +43,7 @@
              {{ trans('dashboard.link.roles') }}
           </a>
           <div class="sb-sidenav-menu-heading">{{ trans('dashboard.menu.setting') }}</div>
-          <a class="nav-link" href="#">
+          <a class="nav-link {{ setActive('filemanager.index') }}" href="{{ route('filemanager.index') }}">
              <div class="sb-nav-link-icon">
                 <i class="fas fa-photo-video"></i>
              </div>
