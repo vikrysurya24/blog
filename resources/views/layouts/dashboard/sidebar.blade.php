@@ -36,12 +36,14 @@
              </div>
              {{ trans('dashboard.link.users') }}
           </a>
-          <a class="nav-link" href="#">
+          {{-- Roles --}}
+          <a class="nav-link {{ setActive(['roles.index', 'roles.create', 'roles.edit', 'roles.show']) }}" href="{{ route('roles.index') }}">
              <div class="sb-nav-link-icon">
                 <i class="fas fa-user-shield"></i>
              </div>
              {{ trans('dashboard.link.roles') }}
           </a>
+          {{-- File Manager --}}
           <div class="sb-sidenav-menu-heading">{{ trans('dashboard.menu.setting') }}</div>
           <a class="nav-link {{ setActive('filemanager.index') }}" href="{{ route('filemanager.index') }}">
              <div class="sb-nav-link-icon">
