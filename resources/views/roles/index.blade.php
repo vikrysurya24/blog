@@ -28,10 +28,12 @@
                         </form>
                         </div>
                         <div class="col-md-6">
-                            <a href="{{ route('roles.create') }}" class="btn btn-primary float-right" role="button">
-                                {{ trans('roles.button.create.value') }}
-                                <i class="fas fa-plus-square"></i>
-                            </a>
+                            @can('role_create')
+                                <a href="{{ route('roles.create') }}" class="btn btn-primary float-right" role="button">
+                                    {{ trans('roles.button.create.value') }}
+                                    <i class="fas fa-plus-square"></i>
+                                </a>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -46,22 +48,28 @@
                                     </label>
                                     <div>
                                         <!-- detail -->
-                                        <a href="{{ route('roles.show', ['role' => $item]) }}" class="btn btn-sm btn-primary"
-                                        role="button">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                                        @can('role_detail')
+                                            <a href="{{ route('roles.show', ['role' => $item]) }}" class="btn btn-sm btn-primary"
+                                            role="button">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        @endcan
                                         <!-- edit -->
-                                        <a class="btn btn-sm btn-info" role="button" href="{{ route('roles.edit', ['role' => $item]) }}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                        @can('role_update')
+                                            <a class="btn btn-sm btn-info" role="button" href="{{ route('roles.edit', ['role' => $item]) }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        @endcan
                                         <!-- delete -->
+                                        @can('role_delete')
                                         <form class="d-inline" action="{{ route('roles.destroy', ['role' => $item]) }}" alert-text="{{ trans('roles.alert.delete.message.confirm', ['name' => $item->name]) }}" method="POST" role="alert">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i>
+                                                <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
+                                        @endcan
                                     </div>
                             </li>
                             <!-- list role -->

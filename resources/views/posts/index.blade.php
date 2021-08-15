@@ -43,10 +43,12 @@
                    </form>
                 </div>
                 <div class="col-md-6">
-                   <a href="{{ route('posts.create') }}" class="btn btn-primary float-right" role="button">
-                      {{ trans('posts.title.create') }}
-                      <i class="fas fa-plus-square"></i>
-                   </a>
+                   @can('post_create')
+                     <a href="{{ route('posts.create') }}" class="btn btn-primary float-right" role="button">
+                        {{ trans('posts.title.create') }}
+                        <i class="fas fa-plus-square"></i>
+                     </a>
+                   @endcan
                 </div>
              </div>
           </div>
@@ -63,22 +65,28 @@
                           {{ $item->description }}
                        </p>
                        <div class="float-right">
-                          <!-- detail -->
-                          <a href="{{ route('posts.show', ['post' => $item]) }}" class="btn btn-sm btn-primary" role="button">
-                             <i class="fas fa-eye"></i>
-                          </a>
-                          <!-- edit -->
-                          <a class="btn btn-sm btn-info" role="button" href="{{ route('posts.edit', ['post' => $item]) }}">
-                             <i class="fas fa-edit"></i>
-                          </a>
-                          <!-- delete -->
-                          <form class="d-inline" action="{{ route('posts.destroy', ['post' => $item]) }}" alert-text="{{ trans('posts.alert.delete.message.confirm', ['title' => $item->title]) }}" method="POST" role="alert">
-                           @csrf
-                           @method('DELETE')
-                           <button type="submit" class="btn btn-sm btn-danger">
-                           <i class="fas fa-trash"></i>
-                           </button>
-                       </form>
+                           @can('post_detail')
+                              <!-- detail -->
+                              <a href="{{ route('posts.show', ['post' => $item]) }}" class="btn btn-sm btn-primary" role="button">
+                                 <i class="fas fa-eye"></i>
+                              </a> 
+                           @endcan
+                           @can('post_update')
+                                 <!-- edit -->
+                                 <a class="btn btn-sm btn-info" role="button" href="{{ route('posts.edit', ['post' => $item]) }}">
+                                    <i class="fas fa-edit"></i>
+                                 </a>
+                           @endcan
+                           @can('post_delete')
+                              <!-- delete -->
+                              <form class="d-inline" action="{{ route('posts.destroy', ['post' => $item]) }}" alert-text="{{ trans('posts.alert.delete.message.confirm', ['title' => $item->title]) }}" method="POST" role="alert">
+                              @csrf
+                              @method('DELETE')
+                                 <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                 </button>
+                              </form>
+                           @endcan
                        </div>
                     </div>
                  </div>

@@ -7,21 +7,27 @@
         </label>
         <div>
             <!-- detail -->
-            <a href="{{ route('categories.show', ['category' => $item]) }}" class="btn btn-sm btn-primary" role="button">
-                <i class="fas fa-eye"></i>
-            </a>
+            @can('category_detail')
+                <a href="{{ route('categories.show', ['category' => $item]) }}" class="btn btn-sm btn-primary" role="button">
+                    <i class="fas fa-eye"></i>
+                </a>
+            @endcan
             <!-- edit -->
-            <a class="btn btn-sm btn-info" role="button" href="{{ route('categories.edit', ['category' => $item]) }}">
-                <i class="fas fa-edit"></i>
-            </a>
+            @can('category_update')
+                <a class="btn btn-sm btn-info" role="button" href="{{ route('categories.edit', ['category' => $item]) }}">
+                    <i class="fas fa-edit"></i>
+                </a>
+            @endcan
             <!-- delete -->
-            <form class="d-inline" action="{{ route('categories.destroy', ['category' => $item]) }}" role="alert" method="POST" alert-title="{{ trans('categories.alert.delete.title') }}" alert-text="{{ trans('categories.alert.delete.message.confirm', ['title' => $item->title]) }}" alert-cancel="{{ trans('categories.button.cancel.value') }}" alert-yes="{{ trans('categories.button.delete.value') }}">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="btn btn-sm btn-danger">
-                <i class="fas fa-trash"></i>
-                </button>
-            </form>
+            @can('category_delete')
+                <form class="d-inline" action="{{ route('categories.destroy', ['category' => $item]) }}" role="alert" method="POST" alert-title="{{ trans('categories.alert.delete.title') }}" alert-text="{{ trans('categories.alert.delete.message.confirm', ['title' => $item->title]) }}" alert-cancel="{{ trans('categories.button.cancel.value') }}" alert-yes="{{ trans('categories.button.delete.value') }}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            @endcan
         </div>
         <!-- todo:show subcategory -->
         @if ($item->inheritance && !trim(request()->get('keyword')))

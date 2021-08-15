@@ -29,10 +29,12 @@
                             </form>
                         </div>
                         <div class="col-md-6">
-                            <a href="{{ route('tags.create') }}" class="btn btn-primary float-right" role="button">
-                                {{ trans('tags.button.create.value') }}
-                                <i class="fas fa-plus-square"></i>
-                            </a>
+                            @can('tag_create')
+                                <a href="{{ route('tags.create') }}" class="btn btn-primary float-right" role="button">
+                                    {{ trans('tags.button.create.value') }}
+                                    <i class="fas fa-plus-square"></i>
+                                </a>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -49,17 +51,21 @@
                                     </label>
                                     <div>
                                         <!-- edit -->
-                                        <a class="btn btn-sm btn-info" role="button" href="{{ route('tags.edit', ['tag' => $item]) }}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                        @can('tag_update')
+                                            <a class="btn btn-sm btn-info" role="button" href="{{ route('tags.edit', ['tag' => $item]) }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        @endcan
                                         <!-- delete -->
-                                        <form class="d-inline" action="{{ route('tags.destroy', ['tag' => $item]) }}" alert-text="{{ trans('tags.alert.delete.message.confirm', ['title' => $item->title]) }}" method="POST" role="alert">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        @can('tag_delete')
+                                            <form class="d-inline" action="{{ route('tags.destroy', ['tag' => $item]) }}" alert-text="{{ trans('tags.alert.delete.message.confirm', ['title' => $item->title]) }}" method="POST" role="alert">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </li>
                                 <!-- end  tag list -->

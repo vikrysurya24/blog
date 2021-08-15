@@ -9,41 +9,51 @@
           </a>
           <div class="sb-sidenav-menu-heading">{{ trans('dashboard.menu.master') }}</div>
           {{-- Posts --}}
-          <a class="nav-link {{ setActive(['posts.index', 'posts.create', 'posts.edit', 'posts.show']) }}" href="{{ route('posts.index') }}">
-             <div class="sb-nav-link-icon">
-                <i class="far fa-newspaper"></i>
-             </div>
-             {{ trans('dashboard.link.posts') }}
-          </a>
+          @can('manage_posts')
+            <a class="nav-link {{ setActive(['posts.index', 'posts.create', 'posts.edit', 'posts.show']) }}" href="{{ route('posts.index') }}">
+               <div class="sb-nav-link-icon">
+                  <i class="far fa-newspaper"></i>
+               </div>
+               {{ trans('dashboard.link.posts') }}
+            </a>
+          @endcan
           {{-- Categories --}}
-          <a class="nav-link {{ setActive(['categories.index', 'categories.create', 'categories.edit', 'categories.show']) }}" href="{{ route('categories.index') }}">
-             <div class="sb-nav-link-icon">
-                <i class="fas fa-bookmark"></i>
-             </div>
-             {{ trans('dashboard.link.categories') }}
-          </a>
+          @can('manage_categories')
+            <a class="nav-link {{ setActive(['categories.index', 'categories.create', 'categories.edit', 'categories.show']) }}" href="{{ route('categories.index') }}">
+               <div class="sb-nav-link-icon">
+                  <i class="fas fa-bookmark"></i>
+               </div>
+               {{ trans('dashboard.link.categories') }}
+            </a>
+          @endcan
           {{-- Tags --}}
-          <a class="nav-link {{ setActive(['tags.index', 'tags.create', 'tags.edit']) }}" href="{{ route('tags.index') }}">
-             <div class="sb-nav-link-icon">
-                <i class="fas fa-tags"></i>
-             </div>
-             {{ trans('dashboard.link.tags') }}
-          </a>
-          {{-- Users --}}
+          @can('manage_tags')
+            <a class="nav-link {{ setActive(['tags.index', 'tags.create', 'tags.edit']) }}" href="{{ route('tags.index') }}">
+               <div class="sb-nav-link-icon">
+                  <i class="fas fa-tags"></i>
+               </div>
+               {{ trans('dashboard.link.tags') }}
+            </a>
+          @endcan
           <div class="sb-sidenav-menu-heading">{{ trans('dashboard.menu.user_permission') }}</div>
-          <a class="nav-link {{ setActive(['users.index', 'users.create', 'users.edit']) }}" href="{{ route('users.index') }}">
-             <div class="sb-nav-link-icon">
-                <i class="fas fa-user"></i>
-             </div>
-             {{ trans('dashboard.link.users') }}
-          </a>
+          {{-- Users --}}
+          @can('manage_users')
+            <a class="nav-link {{ setActive(['users.index', 'users.create', 'users.edit']) }}" href="{{ route('users.index') }}">
+               <div class="sb-nav-link-icon">
+                  <i class="fas fa-user"></i>
+               </div>
+               {{ trans('dashboard.link.users') }}
+            </a>
+          @endcan
           {{-- Roles --}}
-          <a class="nav-link {{ setActive(['roles.index', 'roles.create', 'roles.edit', 'roles.show']) }}" href="{{ route('roles.index') }}">
-             <div class="sb-nav-link-icon">
-                <i class="fas fa-user-shield"></i>
-             </div>
-             {{ trans('dashboard.link.roles') }}
-          </a>
+          @can('manage_roles')
+            <a class="nav-link {{ setActive(['roles.index', 'roles.create', 'roles.edit', 'roles.show']) }}" href="{{ route('roles.index') }}">
+               <div class="sb-nav-link-icon">
+                  <i class="fas fa-user-shield"></i>
+               </div>
+               {{ trans('dashboard.link.roles') }}
+            </a>
+          @endcan
           {{-- File Manager --}}
           <div class="sb-sidenav-menu-heading">{{ trans('dashboard.menu.setting') }}</div>
           <a class="nav-link {{ setActive('filemanager.index') }}" href="{{ route('filemanager.index') }}">

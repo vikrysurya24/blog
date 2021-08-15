@@ -13,6 +13,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PostController extends Controller
 {
+    // Permission
+    public function __construct()
+    {
+        $this->middleware('permission:post_show', ['only' => 'index']);
+        $this->middleware('permission:post_create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:post_update', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:post_detail', ['only' => 'show']);
+        $this->middleware('permission:post_delete', ['only' => 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +30,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $status = in_array($request->get('status'), ['draft', 'publish']) ? $request->get('status') : 'draft';
-        $posts = $status == 'draft' ? Post::draft() : Post::publish();
+        $status = in_array($request->get('status'), ['publish', 'draft']) ? $request->get('status') : 'publish';
+        $posts = $status == 'publish' ? Post::publish() : Post::draft();
         if ($request->get('keyword')) {
             $posts->search($request->get('keyword'));
         }
