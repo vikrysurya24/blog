@@ -32,11 +32,6 @@ return [
                 'placeholder' => 'Browse thumbnails',
                 'attribute' => 'thumbnail'
             ],
-            'category' => [
-                'label' => 'Category',
-                'placeholder' => 'Choose category',
-                'attribute' => 'category'
-            ],
             'search' => [
                 'label' => 'Search',
                 'placeholder' => 'Search for posts',
@@ -57,6 +52,15 @@ return [
                 'label' => 'Status',
                 'placeholder' => 'Choose status',
                 'attribute' => 'status',
+                'option' => [
+                    'draft' => 'Draft',
+                    'publish' => 'Publish',
+                ]
+            ],
+            'category' => [
+                'label' => 'Category',
+                'placeholder' => 'Choose category',
+                'attribute' => 'category',
                 'option' => [
                     'draft' => 'Draft',
                     'publish' => 'Publish',

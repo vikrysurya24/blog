@@ -34,8 +34,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth']], functio
     //Categories 
     Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
 
+    // Select2:Tags
+    Route::get('/tags/select', [\App\Http\Controllers\TagController::class, 'select'])->name('tags.select');
     //Tags 
     Route::resource('/tags', \App\Http\Controllers\TagController::class)->except(['show']);
+
+    //Posts 
+    Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
     // Filmanager
     Route::group(['prefix' => 'filemanager'], function () {

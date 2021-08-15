@@ -25,6 +25,19 @@ class TagController extends Controller
         ]);
     }
 
+    public function select(Request $request)
+    {
+        $tags = [];
+
+        if ($request->has('key')) {
+            $tags = Tag::select('id', 'title')->seacrh($request->key)->get();
+        } else {
+            $tags = Tag::select('id', 'title')->limit(5)->get();
+        }
+
+        return response()->json($tags);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

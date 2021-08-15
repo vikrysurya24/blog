@@ -8,8 +8,8 @@
              {{ trans('dashboard.link.dashboard') }}
           </a>
           <div class="sb-sidenav-menu-heading">{{ trans('dashboard.menu.master') }}</div>
- 
-          <a class="nav-link" href="#">
+          {{-- Posts --}}
+          <a class="nav-link {{ setActive(['posts.index', 'posts.create', 'posts.edit', 'posts.show']) }}" href="{{ route('posts.index') }}">
              <div class="sb-nav-link-icon">
                 <i class="far fa-newspaper"></i>
              </div>
@@ -23,7 +23,7 @@
              {{ trans('dashboard.link.categories') }}
           </a>
           {{-- Tags --}}
-          <a class="nav-link {{ setActive(['tags.index', 'tags.create', 'tags.edit', 'tags.show']) }}" href="{{ route('tags.index') }}">
+          <a class="nav-link {{ setActive(['tags.index', 'tags.create', 'tags.edit']) }}" href="{{ route('tags.index') }}">
              <div class="sb-nav-link-icon">
                 <i class="fas fa-tags"></i>
              </div>

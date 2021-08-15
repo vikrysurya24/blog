@@ -16,7 +16,7 @@
               <div class="card-body">
                  <!-- thumbnail:true -->
                  @if (file_exists(public_path($category->thumbnail)))
-                    <div class="category-tumbnail" style="background-image: url('{{ asset($category->thumbnail) }}'); "></div>
+                    <div class="category-thumbnail" style="background-image: url('{{ asset($category->thumbnail) }}'); "></div>
                  @else
                     <!-- thumbnail:false -->
                     <svg class="img-fluid" width="100%" height="400" xmlns="http://www.w3.org/2000/svg"
@@ -50,12 +50,12 @@
 @push('css')
     <!-- style -->
     <style>
-        .category-tumbnail {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
+        .category-thumbnail {
+            width: 100%;
+            height: 400px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+         }
     </style>
 @endpush

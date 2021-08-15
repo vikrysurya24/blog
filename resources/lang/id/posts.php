@@ -24,18 +24,13 @@ return [
             ],
             'slug' => [
                 'label' => 'Slug',
-                'placeholder' => 'Automatis dibuatkan',
+                'placeholder' => 'Otomatis dibuatkan',
                 'attribute' => 'slug'
             ],
             'thumbnail' => [
                 'label' => 'Thumbnail',
                 'placeholder' => 'Telusuri thumbnail',
                 'attribute' => 'thumbnail'
-            ],
-            'category' => [
-                'label' => 'Kategori',
-                'placeholder' => 'Pilih kategori',
-                'attribute' => 'kategori'
             ],
             'search' => [
                 'label' => 'Pencarian',
@@ -49,8 +44,8 @@ return [
                 'placeholder' => 'Masukan label',
                 'attribute' => 'label',
                 'option' => [
-                    'publish' => 'Terbitkan',
-                    'draft' => 'Draft'
+                    'publish' => 'Terbit',
+                    'draft' => 'Draf'
                 ]
             ],
             'status' => [
@@ -58,8 +53,17 @@ return [
                 'placeholder' => 'Pilih status',
                 'attribute' => 'status',
                 'option' => [
-                    'draft' => 'Draft',
-                    'publish' => 'Terbitkan',
+                    'draft' => 'Draf',
+                    'publish' => 'Terbit',
+                ]
+            ],
+            'category' => [
+                'label' => 'Kategori',
+                'placeholder' => 'Pilih kategori',
+                'attribute' => 'kategori',
+                'option' => [
+                    'draft' => 'Draf',
+                    'publish' => 'Terbit',
                 ]
             ],
         ],

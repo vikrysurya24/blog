@@ -63,3 +63,29 @@ Breadcrumbs::for('edit-tag', function (BreadcrumbTrail $trail, $tag) {
     $trail->push('Edit Tag', route('tags.edit', ['tag' => $tag]));
     $trail->push($tag->title, route('tags.edit', ['tag' => $tag]));
 });
+
+// Dashboard > Posts
+Breadcrumbs::for('posts', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Posts', route('posts.index'));
+});
+
+// Dashboard > Posts > Add
+Breadcrumbs::for('add-post', function (BreadcrumbTrail $trail) {
+    $trail->parent('posts');
+    $trail->push('Add Post', route('posts.create'));
+});
+
+// Dashboard > Posts > Detail > [Title]
+Breadcrumbs::for('detail-post', function (BreadcrumbTrail $trail, $post) {
+    $trail->parent('posts');
+    $trail->push('Detail Post', route('posts.show', ['post' => $post]));
+    $trail->push($post->title, route('posts.show', ['post' => $post]));
+});
+
+// Dashboard > Posts > Edit > [Title]
+Breadcrumbs::for('edit-post', function (BreadcrumbTrail $trail, $post) {
+    $trail->parent('posts');
+    $trail->push('Edit Post', route('posts.edit', ['post' => $post]));
+    $trail->push($post->title, route('posts.edit', ['post' => $post]));
+});
