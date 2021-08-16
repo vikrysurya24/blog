@@ -35,4 +35,9 @@ class Category extends Model
     {
         return $query->where('title', 'LIKE', "%{$title}%");
     }
+
+    public function root()
+    {
+        return $this->parent ? $this->parent->root() : $this;
+    }
 }

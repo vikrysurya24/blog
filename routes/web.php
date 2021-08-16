@@ -16,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 // Lang
 Route::get('/localization/{language}', \App\Http\Controllers\LocalizationController::class)->name('localization.switch');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Blog
+Route::get('/', [\App\Http\Controllers\BlogController::class, 'home'])->name('blog.home');
+Route::get('/post/{slug}', [\App\Http\Controllers\BlogController::class, 'postDetail'])->name('blog.detail-posts');
+Route::get('/categories', [\App\Http\Controllers\BlogController::class, 'category'])->name('blog.categories');
+Route::get('/categories/{slug}', [\App\Http\Controllers\BlogController::class, 'postByCategory'])->name('blog.posts-categories');
+Route::get('/tags', [\App\Http\Controllers\BlogController::class, 'tag'])->name('blog.tags');
+Route::get('/tags/{slug}', [\App\Http\Controllers\BlogController::class, 'postByTag'])->name('blog.posts-tag');
+Route::get('/search', [\App\Http\Controllers\BlogController::class, 'search'])->name('blog.search');
 
 Auth::routes([
     'register' => false

@@ -8,7 +8,57 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 //  with `$trail`. This is nice for IDE type checking and completion.
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
-// Dashboard
+/* Blog */
+
+Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
+    $trail->push('Home', route('blog.home'));
+});
+
+Breadcrumbs::for('blog-home', function (BreadcrumbTrail $trail) {
+    $trail->parent('blog');
+    $trail->push('Blog', route('blog.home'));
+});
+
+// Blog > Post > [title]
+Breadcrumbs::for('blog-post', function (BreadcrumbTrail $trail, $title) {
+    $trail->parent('blog');
+    $trail->push($title, '#');
+});
+
+// Blog > Category
+Breadcrumbs::for('blog-categories', function (BreadcrumbTrail $trail) {
+    $trail->parent('blog');
+    $trail->push('Categories', route('blog.categories'));
+});
+
+// Blog > Category > [title]
+Breadcrumbs::for('blog-posts-categories', function (BreadcrumbTrail $trail, $title) {
+    $trail->parent('blog');
+    $trail->push('Categories', route('blog.categories'));
+    $trail->push($title, '#');
+});
+
+// Blog > Tag
+Breadcrumbs::for('blog-tags', function (BreadcrumbTrail $trail) {
+    $trail->parent('blog');
+    $trail->push('Tags', route('blog.tags'));
+});
+
+// Blog > Tag > [title]
+Breadcrumbs::for('blog-posts-tags', function (BreadcrumbTrail $trail, $title) {
+    $trail->parent('blog');
+    $trail->push('Tags', route('blog.tags'));
+    $trail->push($title, '#');
+});
+
+// Blog > Search
+Breadcrumbs::for('blog-search', function (BreadcrumbTrail $trail, $keyword) {
+    $trail->parent('blog');
+    $trail->push('Search', route('blog.search'));
+    $trail->push($keyword, route('blog.search'));
+});
+
+/* Dashboard */
 Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('dashboard.index'));
 });
